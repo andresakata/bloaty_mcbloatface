@@ -5,16 +5,19 @@ services:
     image: 'bitnami/mariadb:latest'
     environment:
       - ALLOW_EMPTY_PASSWORD=yes
-
   bloat:
-    tty: true # Enables debugging capabilities when attached to this container.
-    image: 'bitnami/rails:latest'
+    tty: true
+    # image: 'bitnami/rails:latest'
+    image: 'andresakata/rails-jemalloc:latest'
     labels:
       kompose.service.type: nodeport
     environment:
-      - MALLOC_ARENA_MAX=64
+      # - MALLOC_ARENA_MAX=2
+      # - MALLOC_ARENA_MAX=64
       - DATABASE_URL=mysql2://mariadb/app_production
-      - RAILS_ENV=development
+      - RAILS_ENV=production
+      - SECRET_KEY_BASE=1
+      - PIDFILE=/app/tmp/pids/jemalloc.pid
     depends_on:
       - mariadb
     ports:
