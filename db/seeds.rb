@@ -6,6 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-(1..1000).each do
-  Post.create(title: 'Hello World', body: 'This is my first post so I just wanted to say hi! ' * 3)
+(1..1500).each do
+  Post.create(title: 'Hello World', body: 'This is my first post so I just wanted to say hi! ' * 10)
 end
